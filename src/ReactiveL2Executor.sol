@@ -1,9 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {AbstractReactive} from "reactive-lib/abstract-base/AbstractReactive.sol";
+import {
+    AbstractReactive
+} from "reactive-lib/abstract-base/AbstractReactive.sol";
+import {IReactive} from "reactive-lib/interfaces/IReactive.sol";
 import {IReactive} from "reactive-lib/interfaces/IReactive.sol";
 import {IPoolManagerLike} from "./interfaces/IPoolManagerLike.sol";
+import {UnichainSniperHook} from "./UnichainSniperHook.sol";
 
 /**
  * @title ReactiveL2Executor
@@ -32,7 +36,11 @@ contract ReactiveL2Executor is AbstractReactive {
     );
 
     event L1MonitorUpdated(address indexed newMonitor);
-    event SwapExecuted(uint256 indexed intentId, uint256 amountIn, uint256 amountOut);
+    event SwapExecuted(
+        uint256 indexed intentId,
+        uint256 amountIn,
+        uint256 amountOut
+    );
 
     // ============ STRUCTS ============
     struct StoredIntent {
@@ -48,9 +56,11 @@ contract ReactiveL2Executor is AbstractReactive {
 
     // ============ STATE VARIABLES ============
     address public owner;
+
     address public l1Monitor; // L1 ReactiveL1Monitor contract address
     uint256 public l1ChainId; // Ethereum mainnet (1)
     IPoolManagerLike public poolManager;
+    UnichainSniperHook public sniperHook;
 
     mapping(uint256 => StoredIntent) public intents;
     mapping(uint256 => bool) public executedIntents;
@@ -73,14 +83,15 @@ contract ReactiveL2Executor is AbstractReactive {
      * @param poolManager_ Address of Unichain PoolManager
      * @param l1Monitor_ Address of L1 ReactiveL1Monitor
      */
-    constructor(address poolManager_, address l1Monitor_) {
+    constructor(address poolManager_, address l1Monitor_, address sniperHook_) {
         require(poolManager_ != address(0), "Invalid pool manager");
         require(l1Monitor_ != address(0), "Invalid L1 monitor");
 
         owner = msg.sender;
         poolManager = IPoolManagerLike(poolManager_);
         l1Monitor = l1Monitor_;
-        l1ChainId = 1; // Ethereum mainnet
+        sniperHook = UnichainSniperHook(sniperHook_);
+        l1ChainId = 11155111; // Ethereum Sepolia
     }
 
     // ============ REACTIVE INTERFACE ============
@@ -91,15 +102,20 @@ contract ReactiveL2Executor is AbstractReactive {
      *      Executes the swap on L2 with the updated price information
      * @param log Contains callback data from L1 monitor
      */
-    function react(IReactive.LogRecord calldata log) external override onlyReactiveNetwork {
+    function react(
+        IReactive.LogRecord calldata log
+    ) external override onlyReactiveNetwork {
         // Verify this callback is from the L1 monitor
         require(log._contract == l1Monitor, "Invalid source");
         require(log.chain_id == l1ChainId, "Invalid chain");
 
         // Decode the callback payload
-        (uint256 intentId, int256 currentPrice, uint256 updatedAt, int24 targetTick) = _decodeCallbackData(
-            log.data
-        );
+        (
+            uint256 intentId,
+            int256 currentPrice,
+            uint256 updatedAt,
+            int24 targetTick
+        ) = _decodeCallbackData(log.data);
 
         // Execute the swap
         _executeSwap(intentId, currentPrice, updatedAt, targetTick);
@@ -159,6 +175,18 @@ contract ReactiveL2Executor is AbstractReactive {
         require(newPoolManager != address(0), "Zero address");
         poolManager = IPoolManagerLike(newPoolManager);
     }
+    function setSniperHook(address newHook) external onlyOwner {
+        require(newHook != address(0), "Zero address");
+        sniperHook = UnichainSniperHook(newHook);
+    }
+
+    /**
+     * @notice Update hook's minimum amount setting
+     * @param newMin New minimum amount
+     */
+    function updateHookMinAmount(uint256 newMin) external onlyOwner {
+        sniperHook.setMinAmountIn(newMin);
+    }
 
     /**
      * @notice Transfer ownership
@@ -179,10 +207,17 @@ contract ReactiveL2Executor is AbstractReactive {
      * @return updatedAt Timestamp of price update
      * @return targetTick Target tick for the swap
      */
-    function _decodeCallbackData(bytes calldata data)
+    function _decodeCallbackData(
+        bytes calldata data
+    )
         internal
         pure
-        returns (uint256 intentId, int256 currentPrice, uint256 updatedAt, int24 targetTick)
+        returns (
+            uint256 intentId,
+            int256 currentPrice,
+            uint256 updatedAt,
+            int24 targetTick
+        )
     {
         require(data.length >= 128, "Invalid callback data");
 
@@ -200,22 +235,25 @@ contract ReactiveL2Executor is AbstractReactive {
      * @param updatedAt Timestamp of price
      * @param targetTick Target tick
      */
-    function _executeSwap(uint256 intentId, int256 currentPrice, uint256 updatedAt, int24 targetTick) internal {
-        StoredIntent storage intent = intents[intentId];
-        require(intent.user != address(0), "Intent not found");
-        require(!intent.executed, "Already executed");
+    function _executeSwap(
+        uint256 intentId,
+        int256 currentPrice,
+        uint256 updatedAt,
+        int24 targetTick
+    ) internal {
+        // We do NOT check local intent state because the Hook manages the intents.
+        // The L2 Executor is just a "Authorized Caller" in this architecture.
 
-        // Mark as executed
-        intent.executed = true;
-        executedIntents[intentId] = true;
-
-        // In a real implementation, you would:
-        // 1. Verify sufficient token balance
-        // 2. Execute swap through Unichain PoolManager
-        // 3. Send output tokens to beneficiary
-
-        // For now, emit the event indicating execution
-        emit IntentExecuted(intentId, intent.user, currentPrice, 0);
+        // Execute the intent on the Hook
+        if (address(sniperHook) != address(0)) {
+            sniperHook.executeIntentFromL1(
+                intentId,
+                currentPrice,
+                updatedAt,
+                address(0)
+            );
+            emit IntentExecuted(intentId, address(0), currentPrice, 0);
+        }
     }
 
     // ============ VIEW FUNCTIONS ============
@@ -225,7 +263,9 @@ contract ReactiveL2Executor is AbstractReactive {
      * @param intentId Intent ID
      * @return intent The stored intent
      */
-    function getIntent(uint256 intentId) external view returns (StoredIntent memory) {
+    function getIntent(
+        uint256 intentId
+    ) external view returns (StoredIntent memory) {
         return intents[intentId];
     }
 

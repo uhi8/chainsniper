@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import {AbstractReactive} from "reactive-lib/abstract-base/AbstractReactive.sol";
+import {
+    AbstractReactive
+} from "reactive-lib/abstract-base/AbstractReactive.sol";
 import {IReactive} from "reactive-lib/interfaces/IReactive.sol";
 
 /**
@@ -53,15 +55,16 @@ contract ReactiveL1Monitor is AbstractReactive {
     // Chainlink PriceUpdated event signature
     // event LatestRoundData(indexed uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, indexed uint80 answeredInRound)
     // We'll subscribe to the broader Update events
-    bytes32 public constant PRICE_UPDATED_TOPIC = keccak256("AnswerUpdated(int256,uint256,uint256)");
+    bytes32 public constant PRICE_UPDATED_TOPIC =
+        keccak256("AnswerUpdated(int256,uint256,uint256)");
 
     // L2 (Optimism/Unichain) chain ID
-    uint256 public constant L2_CHAIN_ID = 7777777; // Unichain mainnet or testnet
+    uint256 public constant L2_CHAIN_ID = 1301; // Unichain Sepolia
 
     // ============ STATE VARIABLES ============
     address public owner;
     address public l2Executor; // L2 ReactiveL2Executor contract address
-    uint256 public l1ChainId; // Ethereum mainnet (1)
+    uint256 public l1ChainId; // Ethereum Sepolia
 
     mapping(uint256 => RegisteredIntent) public intents;
     mapping(address => bool) public subscribedFeeds;
@@ -87,7 +90,7 @@ contract ReactiveL1Monitor is AbstractReactive {
      */
     constructor() {
         owner = msg.sender;
-        l1ChainId = 1; // Ethereum mainnet
+        l1ChainId = 11155111; // Ethereum Sepolia
     }
 
     // ============ REACTIVE INTERFACE ============
@@ -97,7 +100,9 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @dev Called automatically by Reactive Network when subscribed events occur
      * @param log Contains the event data from the blockchain
      */
-    function react(IReactive.LogRecord calldata log) external override onlyReactiveNetwork {
+    function react(
+        IReactive.LogRecord calldata log
+    ) external override onlyReactiveNetwork {
         // Verify this is from a price feed we're monitoring
         require(subscribedFeeds[log._contract], "Unknown price feed");
 
@@ -110,7 +115,7 @@ contract ReactiveL1Monitor is AbstractReactive {
         bytes32 feedKey = keccak256(abi.encode(log._contract));
         // Note: In production, you'd need a more sophisticated mapping for multiple intents per feed
         // For now, we'll iterate through intents (this is simplified)
-        
+
         // Process all intents for this price feed
         _processIntentForPrice(log._contract, currentPrice, updatedAt);
     }
@@ -151,7 +156,13 @@ contract ReactiveL1Monitor is AbstractReactive {
             _subscribeToPriceFeed(priceFeed);
         }
 
-        emit IntentRegistered(intentId, priceFeed, targetPrice, expiry, targetTick);
+        emit IntentRegistered(
+            intentId,
+            priceFeed,
+            targetPrice,
+            expiry,
+            targetTick
+        );
     }
 
     /**
@@ -183,12 +194,12 @@ contract ReactiveL1Monitor is AbstractReactive {
         // Subscribe to AnswerUpdated events from Chainlink aggregator
         // This tells the Reactive Network to watch this contract for the PriceUpdated event
         service.subscribe(
-            l1ChainId,                      // Ethereum mainnet
-            priceFeed,                      // Chainlink aggregator address
-            uint256(PRICE_UPDATED_TOPIC),   // AnswerUpdated event signature
-            0,                              // No second topic filter
-            0,                              // No third topic filter
-            0                               // No fourth topic filter
+            l1ChainId, // Ethereum mainnet
+            priceFeed, // Chainlink aggregator address
+            uint256(PRICE_UPDATED_TOPIC), // AnswerUpdated event signature
+            0, // No second topic filter
+            0, // No third topic filter
+            0 // No fourth topic filter
         );
 
         subscribedFeeds[priceFeed] = true;
@@ -201,11 +212,9 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @return currentPrice The decoded price
      * @return updatedAt The timestamp of the price
      */
-    function _decodePriceData(bytes calldata data)
-        internal
-        pure
-        returns (int256 currentPrice, uint256 updatedAt)
-    {
+    function _decodePriceData(
+        bytes calldata data
+    ) internal pure returns (int256 currentPrice, uint256 updatedAt) {
         // Decode AnswerUpdated(int256 current, uint256 roundId, uint256 updatedAt)
         // In Solidity logs, indexed parameters are in topics, non-indexed in data
         require(data.length >= 64, "Invalid data length");
@@ -220,15 +229,20 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @param currentPrice The new price
      * @param updatedAt Timestamp of the price
      */
-    function _processIntentForPrice(address priceFeed, int256 currentPrice, uint256 updatedAt) internal {
+    function _processIntentForPrice(
+        address priceFeed,
+        int256 currentPrice,
+        uint256 updatedAt
+    ) internal {
         // In production, you'd have a mapping of feed -> intentIds to check
         // For this example, we iterate through recent intents
         // This is inefficient and should be optimized with proper indexing
 
         // Check each intent's price feed
-        for (uint256 i = 1; i < 1000; i++) { // Simplified loop - in production use proper enumeration
+        for (uint256 i = 1; i < 1000; i++) {
+            // Simplified loop - in production use proper enumeration
             RegisteredIntent storage intent = intents[i];
-            
+
             if (intent.priceFeed != priceFeed) continue;
             if (intent.triggered) continue;
             if (block.timestamp > intent.expiry) continue;
@@ -239,9 +253,9 @@ contract ReactiveL1Monitor is AbstractReactive {
 
             // Encode callback payload for L2 execution
             bytes memory payload = abi.encode(
-                i,              // intentId
-                currentPrice,   // price that triggered
-                updatedAt,      // timestamp
+                i, // intentId
+                currentPrice, // price that triggered
+                updatedAt, // timestamp
                 intent.targetTick
             );
 
@@ -259,7 +273,9 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @param intentId Intent ID
      * @return intent The intent details
      */
-    function getIntent(uint256 intentId) external view returns (RegisteredIntent memory) {
+    function getIntent(
+        uint256 intentId
+    ) external view returns (RegisteredIntent memory) {
         return intents[intentId];
     }
 
