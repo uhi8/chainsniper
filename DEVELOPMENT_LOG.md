@@ -8,3 +8,7 @@
 - Developed base navigation and layout components.
 - Implemented ConnectButton with custom branding.
 - Finalized responsive UI skeleton for the sniper dashboard.
+## 2026-03-08
+- Created SniperMonitor component for real-time intent tracking.
+- Implemented dashboard state management for tracking active sniper orders.
+- Added empty states and loading skeletons for better UX.
