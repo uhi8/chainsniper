@@ -16,3 +16,7 @@
 - Implemented CreateIntentForm for users to submit limit orders.
 - Integrated LivePrice component for accurate token price tracking.
 - Developed form validation and user feedback triggers.
+## 2026-03-10
+- Refined ReactiveL1Monitor and ReactiveL2Executor with optimized event sync.
+- Enhanced cross-chain monitor for better Unichain event handling.
+- Implemented decimal precision fixes for retail-sized intents.
