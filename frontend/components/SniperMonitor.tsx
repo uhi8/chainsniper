@@ -1,7 +1,7 @@
 'use client'
 
-import { useWatchContractEvent } from 'wagmi'
-import { useState } from 'react'
+import { useWatchContractEvent, usePublicClient, useAccount } from 'wagmi'
+import { useState, useEffect } from 'react'
 import { Activity, CheckCircle, XCircle } from 'lucide-react'
 import { DEPLOYED_ADDRESSES } from '@/lib/addresses'
 import { SNIPER_HOOK_ABI } from '@/lib/abis'
@@ -14,8 +14,28 @@ type LogEntry = {
 }
 
 export function SniperMonitor() {
-    const [logs, setLogs] = useState<LogEntry[]>([])
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => { setMounted(true) }, [])
 
+    const [logs, setLogs] = useState<LogEntry[]>([])
+    const { address } = useAccount()
+
+    // Function to add a log entry
+    const addLog = (message: string, type: LogEntry['type']) => {
+        const now = new Date().toLocaleTimeString('en-US', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+        })
+        setLogs((prev) => {
+            // Check for duplicates (by simple message match for now)
+            if (prev.some(l => l.message === message)) return prev;
+            return [...prev.slice(-30), { id: Date.now() + Math.random(), timestamp: now, message, type }]
+        })
+    }
+
+    // Watch for new IntentCreated events
     useWatchContractEvent({
         address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
@@ -24,13 +44,14 @@ export function SniperMonitor() {
             logs.forEach((log) => {
                 const args = log.args as any
                 addLog(
-                    `Intent #${args.intentId} created: ${Number(args.amountIn) / 1e6} USDC @ $${Number(args.targetPrice) / 1e8}`,
+                    `🆕 Intent #${args.intentId} created: ${Number(args.amountIn) / 1e6} USDC @ $${Number(args.targetPrice) / 1e8}`,
                     'info'
                 )
             })
         },
     })
 
+    // Watch for new IntentExecuted events
     useWatchContractEvent({
         address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
@@ -39,22 +60,67 @@ export function SniperMonitor() {
             logs.forEach((log) => {
                 const args = log.args as any
                 addLog(
-                    `🎯 Intent #${args.intentId} EXECUTED! Price: $${Number(args.oraclePrice) / 1e8}`,
+                    `🎯 Intent #${args.intentId} EXECUTED at $${Number(args.oraclePrice) / 1e8}`,
                     'success'
                 )
             })
         },
     })
 
-    const addLog = (message: string, type: LogEntry['type']) => {
-        const now = new Date().toLocaleTimeString('en-US', {
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-        })
-        setLogs((prev) => [...prev.slice(-7), { id: Date.now(), timestamp: now, message, type }])
-    }
+    // Fetch historical events on mount
+    const publicClient = usePublicClient()
+
+    useEffect(() => {
+        const fetchHistory = async () => {
+            if (!publicClient) return
+
+            try {
+                // Deployment block for current hook on Unichain Sepolia
+                const DEPLOYMENT_BLOCK = BigInt(43168661)
+                const currentBlock = await publicClient.getBlockNumber()
+
+                // We'll fetch in 10k block chunks to respect RPC limits
+                // For now, let's just fetch the most recent 10k, but starting from deployment
+                const fromBlock = currentBlock - BigInt(9900) > DEPLOYMENT_BLOCK
+                    ? currentBlock - BigInt(9900)
+                    : DEPLOYMENT_BLOCK
+
+                const creationLogs = await publicClient.getContractEvents({
+                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+                    abi: SNIPER_HOOK_ABI,
+                    eventName: 'IntentCreated',
+                    fromBlock: fromBlock
+                })
+
+                const executionLogs = await publicClient.getContractEvents({
+                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+                    abi: SNIPER_HOOK_ABI,
+                    eventName: 'IntentExecuted',
+                    fromBlock: fromBlock
+                })
+
+                creationLogs.forEach(log => {
+                    const args = log.args as any
+                    addLog(
+                        `Intent #${args.intentId} created: ${Number(args.amountIn) / 1e6} USDC @ $${Number(args.targetPrice) / 1e8}`,
+                        'info'
+                    )
+                })
+
+                executionLogs.forEach(log => {
+                    const args = log.args as any
+                    addLog(
+                        `🎯 Intent #${args.intentId} EXECUTED at $${Number(args.oraclePrice) / 1e8}`,
+                        'success'
+                    )
+                })
+            } catch (err) {
+                console.error("Error fetching history:", err)
+            }
+        }
+
+        if (mounted) fetchHistory()
+    }, [publicClient, mounted])
 
     const getIcon = (type: LogEntry['type']) => {
         switch (type) {

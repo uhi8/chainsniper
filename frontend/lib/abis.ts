@@ -56,6 +56,26 @@ export const SNIPER_HOOK_ABI = [
         "type": "function"
     },
     {
+        "inputs": [
+            { "internalType": "uint256", "name": "intentId", "type": "uint256" },
+            { "internalType": "address", "name": "recipient", "type": "address" }
+        ],
+        "name": "cancelIntent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            { "internalType": "uint256", "name": "intentId", "type": "uint256" },
+            { "internalType": "address", "name": "recipient", "type": "address" }
+        ],
+        "name": "refundIntent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "anonymous": false,
         "inputs": [
             { "indexed": true, "internalType": "uint256", "name": "intentId", "type": "uint256" },

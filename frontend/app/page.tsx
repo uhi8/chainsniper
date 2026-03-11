@@ -2,6 +2,7 @@ import { ConnectButton } from "@/components/ConnectButton";
 import { CreateIntentForm } from "@/components/CreateIntentForm";
 import { SniperMonitor } from "@/components/SniperMonitor";
 import { LivePrice } from "@/components/LivePrice";
+import { UserIntents } from "@/components/UserIntents";
 import { Target } from "lucide-react";
 
 export default function Home() {
@@ -40,9 +41,14 @@ export default function Home() {
             <LivePrice />
           </div>
 
-          {/* Center: Create Order Form */}
-          <div className="flex flex-col">
-            <CreateIntentForm />
+          {/* Center: Create Order Form & My Orders */}
+          <div className="flex flex-col gap-4">
+            <div className="flex-1">
+              <CreateIntentForm />
+            </div>
+            <div className="h-1/2">
+              <UserIntents />
+            </div>
           </div>
 
           {/* Right: Activity Monitor */}
