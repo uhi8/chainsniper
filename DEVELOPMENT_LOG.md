@@ -20,3 +20,7 @@
 - Refined ReactiveL1Monitor and ReactiveL2Executor with optimized event sync.
 - Enhanced cross-chain monitor for better Unichain event handling.
 - Implemented decimal precision fixes for retail-sized intents.
+## 2026-03-11
+- Finalized deployment scripts for Hooks and Executors.
+- Captured testnet deployment logs and verified contract addresses.
+- Automated Unichain Sepolia deployment workflow.
