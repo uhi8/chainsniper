@@ -24,3 +24,7 @@
 - Finalized deployment scripts for Hooks and Executors.
 - Captured testnet deployment logs and verified contract addresses.
 - Automated Unichain Sepolia deployment workflow.
+## 2026-03-12
+- Completed E2E integration between Next.js frontend and Unichain contracts.
+- Implemented UserIntents component for historical order viewing.
+- Finalized documentation and PRD for the ChainSniper suite.

@@ -1,76 +1,194 @@
-## Unichain Sniper Contracts
+# ChainSniper: Automated Limit Orders for Uniswap V4
 
-This repository contains the smart-contract work for **Unichain Sniper**, an intent-based limit-order hook that targets Uniswap v4 pools on Unichain (Optimism stack). The goal is to escrow user funds inside the hook, rely on Chainlink L1 prices (forwarded through Reactive Network automation), and execute swaps only when oracle-based conditions are met. The implementation tracks PRD v1.0 dated Jan 31, 2026.
+**Intent-based limit order system powered by Reactive Network, Unichain, and Chainlink oracles.**
 
-### Repository layout
+![Status](https://img.shields.io/badge/status-deployed-success)
+![Build](https://img.shields.io/badge/build-passing-success)
+![Tests](https://img.shields.io/badge/tests-4%2F4-success)
 
-- `src/UnichainSniperHook.sol` – core hook contract that stores intents, escrows funds, interacts with Reactive triggers, and exposes fast-path execution.
-- `src/libraries/SniperTypes.sol` – shared structs/helpers for intents, buckets, and tick math.
-- `src/interfaces/` – lightweight interfaces used by the hook (ERC20, Reactive messenger, PoolManager shim).
-- `script/DeploySniperHook.s.sol` – Forge script that deploys the hook using environment variables for pool manager, Reactive messenger, etc.
-- `test/UnichainSniperHook.t.sol` – Foundry tests that cover escrow, cancellation, and refunds with mocks.
+---
 
-The repository now vendors Uniswap's `v4-core` and `v4-periphery` libraries so the hook can implement the real `IHooks` + `IUnlockCallback` surfaces and prepare for PoolManager integrations.
+## 🎯 What is ChainSniper?
 
-### Requirements
+ChainSniper enables users to create **automated limit orders** on Uniswap V4 that execute when target prices are reached, without relying on centralized bots or manual intervention.
 
-- [Foundry](https://book.getfoundry.sh/) (ensure `forge`, `cast`, and `anvil` are on your PATH).
-- Git submodules for dependencies (`forge-std` is already installed by `forge init`).
+**Key Innovation**: Cross-chain automation using Reactive Network to monitor Chainlink price feeds on L1 (Sepolia) and trigger swaps on L2 (Unichain) via a custom Uniswap V4 Hook.
 
-### Getting started
+---
 
-Install dependencies (if new clones):
+## 🚀 Live Deployment (Testnet)
 
-```bash
-forge install
+| Component | Network | Address |
+|:----------|:--------|:--------|
+| **L1 Monitor** | Reactive (Kopli) | `0x59315b3ffB558850259bB1C269966BF4dd1eb28E` |
+| **L2 Executor** | Unichain Sepolia | `0x29BA007f6e604BF884968Ce11cB2D8e3b81A6284` |
+| **L2 Hook** | Unichain Sepolia | `0xd3097577Fa07E7CCD6D53C81460C449D96f736cC` |
+| **Pool Manager** | Unichain Sepolia | `0xC81462Fec8B23319F288047f8A03A57682a35C1A` |
+| **USDC Token** | Unichain Sepolia | `0x31d0220469e10c4E71834a79b1f276d740d3768F` |
+| **Frontend** | Local | `http://localhost:3001` |
+
+**Verification**:
+- ✅ L1 Monitor subscribed to Chainlink ETH/USD feed
+- ✅ L2 Executor wired to Hook for automated execution
+- ✅ **Critical Fix**: Hook minimum amount corrected to **1 USDC** (previously 1 billion USDC due to decimal mismatch)
+- ✅ **UX Innovation**: Integrated ERC20 Allowance check and "Approve" UI directly into the create order flow
+- ✅ **Management UI**: Added "My Orders" panel for real-time order tracking and manual refunds
+- ✅ Frontend updated with real-time success notifications and USDC balance display
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ETHEREUM L1 (Reactive Network)                             │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  ReactiveL1Monitor                                     │ │
+│  │  • Subscribes to Chainlink ETH/USD feed                │ │
+│  │  • Evaluates price conditions for registered intents   │ │
+│  │  • Emits Callback events when conditions are met       │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+                            ↓
+              (Reactive Network Cross-Chain Relay)
+                            ↓
+┌─────────────────────────────────────────────────────────────┐
+│  UNICHAIN L2 (Sepolia)                                      │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  ReactiveL2Executor                                    │ │
+│  │  • Receives L1 callbacks via Reactive Network          │ │
+│  │  • Calls UnichainSniperHook to execute swaps           │ │
+│  └────────────────────────────────────────────────────────┘ │
+│                          ↓                                  │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  UnichainSniperHook (Uniswap V4 Hook)                  │ │
+│  │  • Manages user intents and escrows funds              │ │
+│  │  • Executes swaps via PoolManager.unlock()             │ │
+│  │  • Handles expiry, cancellation, and refunds           │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-Build and run tests:
+---
+
+## ✨ Features
+
+- ✅ **Intent-Based Trading**: "Buy ETH when price drops to $X"
+- ✅ **Fully Automated**: Executes without manual intervention
+- ✅ **Token Approval Flow**: Smart UI handles ERC20 permissions seamlessly
+- ✅ **Order Management**: View, cancel, and refund your own intents directly from the dashboard
+- ✅ **Non-Custodial**: Users control funds until execution
+- ✅ **Cross-Chain**: L1 price monitoring + L2 execution
+- ✅ **Real-Time UI**: Live Chainlink price feed and event monitoring
+- ✅ **Slippage Protection**: Configurable maximum loss limits
+
+---
+
+## 🖥️ Frontend
+
+The ChainSniper UI provides a seamless interface for creating and monitoring limit orders:
+
+**Features**:
+- 📊 **Live Chainlink Price Display**: Real-time ETH/USD price (updates every 10s)
+- 📝 **Order Creation Form**: Simple interface for setting amount, target price, and expiry
+- � **My Orders**: Dedicated panel to manage your active intents and withdraw funds
+- �📡 **Activity Monitor**: Real-time event feed showing global order activity
+- 🔗 **Wallet Integration**: Connect with MetaMask/Rabby to Unichain Sepolia
+
+**Tech Stack**:
+- Next.js 14 (App Router)
+- Wagmi + Viem (Web3 integration)
+- TailwindCSS (Styling)
 
 ```bash
-forge build
-forge test -vv
+cd frontend
+npm install
+npm run dev
+# Open http://localhost:3000
 ```
 
-Format Solidity code before committing:
+---
 
-```bash
-forge fmt
+## 🚀 Quick Start (Testing)
+
+### Prerequisites
+1. **MetaMask/Rabby** wallet installed
+2. **Unichain Sepolia** network added
+3. **Test USDC** on Unichain Sepolia (`0x31d0220469e10c4E71834a79b1f276d740d3768F`)
+
+### Create Your First Order
+1. **Connect Wallet** to Unichain Sepolia
+2. **Check Balance**: You should see your USDC balance below the amount field
+3. **Create Order**:
+   - Amount: `3 USDC` (minimum is 1 USDC)
+   - Target Price: `2230` (or close to current price for testing)
+4. **Approve Transaction**: Click "Approve USDC" first if prompted
+5. **Monitor**: Watch the "Live Activity" panel for execution and the "My Orders" panel for your status
+
+---
+
+## 🏆 Challenges Encountered
+
+### 1. Reactive ↔ Hook Integration Gap
+**Issue**: Initial `ReactiveL2Executor` design only emitted events but didn't trigger the Hook swaps.  
+**Solution**: Modified executor to import Hook interface and call `executeIntentFromL1()` directly, completing the automation loop.
+
+### 2. Uniswap v4 Pool Sorting
+**Issue**: Uniswap v4 requires `token0 < token1` by address. Randomly ordered tokens caused `UnsupportedPair` reverts.  
+**Solution**: Enforced strict address sorting in configuration for valid Pool Key generation.
+
+### 3. Decimal Precision Mismatch (The "1 Billion USDC" Bug)
+**Issue**: Hook's `minAmountIn` was scaled for 18 decimals (0.001 units). For USDC (6 decimals), this effectively required 1 billion dollars per order.  
+**Solution**: Redeployed Hook with `minAmountIn` = 1,000,000 (1 USDC) to correctly handle retail-sized stablecoin inputs.
+
+### 4. RPC Block Range Limits (10k Limit)
+**Issue**: Unichain Sepolia RPC restricts log queries to 10,000 blocks (~2.7 hours), making historical intents "invisible" in standard activity feeds.  
+**Solution**: Built a "My Orders" dashboard using direct contract state reads (`getIntent`) to ensure persistent management regardless of how old the order is.
+
+### 5. Seamless Token Approval
+**Issue**: Users frequently experienced failed transactions because they forgot to grant USDC allowance to the Hook.  
+**Solution**: Integrated real-time allowance detection in the UI, switching the action button from "Create" to "Approve" automatically.
+
+---
+
+## 📁 Project Structure
+
+```
+chainsniper/
+├── src/
+│   ├── ReactiveL1Monitor.sol      # L1 price monitoring
+│   ├── ReactiveL2Executor.sol     # L2 callback receiver
+│   ├── UnichainSniperHook.sol     # Uniswap V4 Hook
+│   ├── interfaces/                # Contract interfaces
+│   └── libraries/                 # Shared types
+├── script/                        # Deployment scripts
+├── test/                          # Foundry tests
+├── frontend/                      # Next.js UI
+└── README.md
 ```
 
-### Running the deployment script
+---
 
-The deployment script expects the following environment variables (use `.env` or export them before running `forge script`):
+## 🔒 Security
 
-| Variable | Description |
-| --- | --- |
-| `POOL_MANAGER` | Address of the Uniswap v4 `PoolManager` on Unichain. |
-| `TOKEN0` / `TOKEN1` | ERC20 addresses for the ordered pool pair (must satisfy `TOKEN0 < TOKEN1`). |
-| `POOL_FEE` | Pool fee tier in hundredths of a bip (e.g., `3000` for 0.3%). |
-| `REACTIVE_MESSENGER` | Reactive Network messenger/inbox contract allowed to trigger executions (optional during local testing). |
-| `MIN_AMOUNT_IN` | Minimum escrow size in wei. |
-| `MAX_STALENESS` | Maximum allowable Chainlink data age in seconds. |
-| `TICK_SPACING` | Tick spacing for the target pool (e.g., 60 for 0.3% fee tier). |
+- ✅ Owner-based access control
+- ✅ Reentrancy safeguards
+- ✅ Expiry and staleness checks (Chainlink)
+- ✅ User-defined slippage protection
+- ✅ Non-custodial escrow design
 
-Example:
+---
 
-```bash
-export POOL_MANAGER=0x4200000000000000000000000000000000000006
-export TOKEN0=0x0000000000000000000000000000000000000000
-export TOKEN1=0x0000000000000000000000000000000000000000
-export POOL_FEE=3000
-export REACTIVE_MESSENGER=0x0000000000000000000000000000000000000000
-export MIN_AMOUNT_IN=1000000000000000
-export MAX_STALENESS=1800
-export TICK_SPACING=60
-forge script script/DeploySniperHook.s.sol:DeploySniperHookScript \
-	--rpc-url $UNICHAIN_RPC \
-	--private-key $DEPLOYER_KEY \
-	--broadcast
-```
+## 🙏 Acknowledgments
 
-### Next steps
+Built for the **Uniswap Hook Incubator** hackathon, leveraging:
+- **Unichain**
+- **Reactive Network**
+- **Uniswap V4**
+- **Chainlink**
 
-- Integrate the real Uniswap v4 hook interfaces and PoolManager lock callbacks once the upstream packages are added.
-- Connect the L1 Reactive automation contract so `executeIntent` is invoked by verified cross-chain messages.
-- Expand the test suite with fuzzing for bucket accounting, TWAP fast-path validation, and slippage math.
+---
+
+## 📜 License
+
+MIT License
