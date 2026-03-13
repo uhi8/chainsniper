@@ -48,18 +48,26 @@ contract ReactiveL1Monitor is AbstractReactive {
         int24 targetTick;
         address priceFeed;
         bool triggered;
+        bool isBuy; // True if buying ETH (Input = USDC), False if selling ETH (Input = WETH)
         uint256 registeredAt;
     }
 
     // ============ CONSTANTS ============
     // Chainlink PriceUpdated event signature
-    // event LatestRoundData(indexed uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, indexed uint80 answeredInRound)
-    // We'll subscribe to the broader Update events
+    // event AnswerUpdated(int256 indexed current, uint256 indexed roundId, uint256 updatedAt)
     bytes32 public constant PRICE_UPDATED_TOPIC =
         keccak256("AnswerUpdated(int256,uint256,uint256)");
 
-    // L2 (Optimism/Unichain) chain ID
+    // Unichain L2 IntentCreated event signature
+    bytes32 public constant INTENT_CREATED_TOPIC =
+        keccak256(
+            "IntentCreated(uint256,address,address,address,uint256,uint256,int24,uint256,uint16)"
+        );
+
+    // L2 (Unichain) chain ID
     uint256 public constant L2_CHAIN_ID = 1301; // Unichain Sepolia
+    address public constant SNIPER_HOOK_L2 =
+        0x74c6A89d15dfe86F77091ED9460786901031bB01;
 
     // ============ STATE VARIABLES ============
     address public owner;
@@ -88,9 +96,23 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @dev This is deployed on both Reactive Network and ReactVM
      *      Use vm flag to distinguish between environments
      */
-    constructor() {
+    constructor() payable {
         owner = msg.sender;
         l1ChainId = 11155111; // Ethereum Sepolia
+
+        // Subscribe to L2 IntentCreated events immediately
+        // NOTE: Unichain Sepolia (1301) not yet supported by Reactive Mainnet.
+        // Disabling direct subscription for now. Intents must be registered manually or via relayer.
+        /*
+        service.subscribe(
+            L2_CHAIN_ID,
+            SNIPER_HOOK_L2,
+            uint256(INTENT_CREATED_TOPIC),
+            0, // topic_1 (intentId) - subscribe to all
+            0, // topic_2 (user) - subscribe to all
+            0 // topic_3 (tokenIn) - subscribe to all
+        );
+        */
     }
 
     // ============ REACTIVE INTERFACE ============
@@ -103,21 +125,20 @@ contract ReactiveL1Monitor is AbstractReactive {
     function react(
         IReactive.LogRecord calldata log
     ) external override onlyReactiveNetwork {
-        // Verify this is from a price feed we're monitoring
-        require(subscribedFeeds[log._contract], "Unknown price feed");
+        if (log.chain_id == L2_CHAIN_ID && log._contract == SNIPER_HOOK_L2) {
+            if (bytes32(log.topic_0) == INTENT_CREATED_TOPIC) {
+                _syncIntentFromL2(log);
+            }
+            return;
+        }
 
-        // Decode the price data from the log
-        // Chainlink LatestRoundData structure in log.data:
-        // roundId (32), answer (32), startedAt (32), updatedAt (32), answeredInRound (32)
-        (int256 currentPrice, uint256 updatedAt) = _decodePriceData(log.data);
-
-        // Find the intent this price update relates to
-        bytes32 feedKey = keccak256(abi.encode(log._contract));
-        // Note: In production, you'd need a more sophisticated mapping for multiple intents per feed
-        // For now, we'll iterate through intents (this is simplified)
-
-        // Process all intents for this price feed
-        _processIntentForPrice(log._contract, currentPrice, updatedAt);
+        // Handle L1 Price Monitoring
+        if (log.chain_id == l1ChainId && subscribedFeeds[log._contract]) {
+            (int256 currentPrice, uint256 updatedAt) = _decodePriceData(
+                log.data
+            );
+            _processIntentForPrice(log._contract, currentPrice, updatedAt);
+        }
     }
 
     // ============ MANAGEMENT FUNCTIONS ============
@@ -148,6 +169,7 @@ contract ReactiveL1Monitor is AbstractReactive {
             targetTick: targetTick,
             priceFeed: priceFeed,
             triggered: false,
+            isBuy: true,
             registeredAt: block.timestamp
         });
 
@@ -182,6 +204,37 @@ contract ReactiveL1Monitor is AbstractReactive {
     function transferOwnership(address newOwner) external onlyOwner {
         require(newOwner != address(0), "Zero address");
         owner = newOwner;
+    }
+
+    /**
+     * @notice Manually trigger intent execution for testing/demo purposes
+     * @dev Bypasses Reactive Network subscription for testnet limitations
+     * @param intentId The intent ID to trigger
+     * @param mockPrice The price to use for triggering (8 decimals)
+     */
+    function testTriggerIntent(
+        uint256 intentId,
+        int256 mockPrice
+    ) external onlyOwner {
+        RegisteredIntent storage intent = intents[intentId];
+        require(intent.intentId != 0, "Intent not registered");
+        require(!intent.triggered, "Already triggered");
+        require(block.timestamp <= intent.expiry, "Intent expired");
+
+        // Price condition met! Trigger execution
+        intent.triggered = true;
+
+        // Encode callback payload for L2 execution
+        bytes memory payload = abi.encode(
+            intentId,
+            mockPrice,
+            block.timestamp,
+            intent.targetTick
+        );
+
+        // Emit callback that will be picked up by L2 executor
+        emit Callback(L2_CHAIN_ID, l2Executor, 100000, payload);
+        emit PriceThresholdMet(intentId, mockPrice, block.timestamp);
     }
 
     // ============ INTERNAL FUNCTIONS ============
@@ -234,19 +287,28 @@ contract ReactiveL1Monitor is AbstractReactive {
         int256 currentPrice,
         uint256 updatedAt
     ) internal {
-        // In production, you'd have a mapping of feed -> intentIds to check
-        // For this example, we iterate through recent intents
-        // This is inefficient and should be optimized with proper indexing
-
-        // Check each intent's price feed
-        for (uint256 i = 1; i < 1000; i++) {
-            // Simplified loop - in production use proper enumeration
+        // Process each intent matched to this feed
+        // Optimized: Only search up to 20 for the demo to avoid gas errors
+        for (uint256 i = 1; i <= 20; i++) {
             RegisteredIntent storage intent = intents[i];
 
             if (intent.priceFeed != priceFeed) continue;
             if (intent.triggered) continue;
             if (block.timestamp > intent.expiry) continue;
-            if (currentPrice < intent.targetPrice) continue;
+
+            // Bidirectional Triggering Logic
+            bool conditionMet = false;
+            if (intent.isBuy) {
+                // Buy the Dip: Trigger if Current Price <= Target Price
+                // e.g. Target $2000, Current $1999 -> Trigger
+                if (currentPrice <= intent.targetPrice) conditionMet = true;
+            } else {
+                // Sell High / Take Profit: Trigger if Current Price >= Target Price
+                // e.g. Target $3000, Current $3001 -> Trigger
+                if (currentPrice >= intent.targetPrice) conditionMet = true;
+            }
+
+            if (!conditionMet) continue;
 
             // Price condition met! Trigger execution
             intent.triggered = true;
@@ -264,6 +326,59 @@ contract ReactiveL1Monitor is AbstractReactive {
 
             emit PriceThresholdMet(i, currentPrice, updatedAt);
         }
+    }
+
+    /**
+     * @notice Synchronize intent from L2 event to the L1 monitor state
+     * @param log The L2 log record
+     */
+    function _syncIntentFromL2(IReactive.LogRecord calldata log) internal {
+        // event IntentCreated(uint256 indexed intentId, address indexed user, address indexed tokenIn, ...)
+        uint256 intentId = uint256(log.topic_1);
+
+        // Decode non-indexed data: address tokenOut, uint256 amountIn, uint256 targetPrice, int24 targetTick, uint256 expiry, uint16 maxSlippageBps
+        (, , uint256 targetPrice, int24 targetTick, uint256 expiry, ) = abi
+            .decode(
+                log.data,
+                (address, uint256, uint256, int24, uint256, uint16)
+            );
+
+        address tokenIn = address(uint160(uint256(log.topic_3)));
+
+        // Determine direction:
+        // Token0 = USDC (0x31d0...)
+        // Token1 = WETH (0x4200...)
+        // If tokenIn == USDC, we are swapping USDC -> ETH (Buying ETH)
+        // If tokenIn == WETH, we are swapping ETH -> USDC (Selling ETH)
+
+        // Address check for USDC on Unichain Sepolia
+        bool isBuy = (tokenIn == 0x31d0220469e10c4E71834a79b1f276d740d3768F);
+
+        // For hackathon: Hardcode ETH/USD feed if swapping WETH (0x4200...0006)
+        address priceFeed = 0x694AA1769357215DE4FAC081bf1f309aDC325306;
+
+        intents[intentId] = RegisteredIntent({
+            intentId: intentId,
+            targetPrice: int256(targetPrice),
+            expiry: expiry,
+            targetTick: targetTick,
+            priceFeed: priceFeed,
+            triggered: false,
+            isBuy: isBuy,
+            registeredAt: block.timestamp
+        });
+
+        if (!subscribedFeeds[priceFeed]) {
+            _subscribeToPriceFeed(priceFeed);
+        }
+
+        emit IntentRegistered(
+            intentId,
+            priceFeed,
+            int256(targetPrice),
+            expiry,
+            targetTick
+        );
     }
 
     // ============ VIEW FUNCTIONS ============

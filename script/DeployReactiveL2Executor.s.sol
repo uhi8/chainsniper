@@ -25,7 +25,8 @@ contract DeployReactiveL2ExecutorScript is Script {
         require(poolManager != address(0), "POOL_MANAGER_ADDRESS not set");
         require(l1Monitor != address(0), "L1_MONITOR_ADDRESS not set");
 
-        vm.startBroadcast();
+        uint256 deployerPrivateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
 
         address hook = vm.envOr("L2_SNIPER_HOOK_ADDRESS", address(0));
         require(hook != address(0), "L2_SNIPER_HOOK_ADDRESS not set");

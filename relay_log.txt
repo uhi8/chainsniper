@@ -1,0 +1,126 @@
+🔗 Starting Execution Relay...
+📡 Watching L1 Monitor: 0x78240fD4Ac1Ea8b311e866f0e513c9F49f9c42C7
+🎯 Relaying to L2 Hook: 0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+⏰ Polling every 5 seconds...
+
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2158
+   Timestamp: 2026-03-19T14:22:48.000Z
+   ⏳ Calling L2 Executor...
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2158
+   Timestamp: 2026-03-19T14:22:48.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xc260699b
+
+Unable to decode signature "0xc260699b" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xc260699b.
+ 
+Contract Call:
+  address:   0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  function:  executeIntentFromL1(uint256 intentId, uint256 oraclePrice, uint256 answeredAt, address beneficiary)
+  args:                         (1, 215800000000, 1773930168, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2158
+   Timestamp: 2026-03-19T14:22:48.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xc260699b
+
+Unable to decode signature "0xc260699b" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xc260699b.
+ 
+Contract Call:
+  address:   0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  function:  executeIntentFromL1(uint256 intentId, uint256 oraclePrice, uint256 answeredAt, address beneficiary)
+  args:                         (1, 215800000000, 1773930168, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xc260699b
+
+Unable to decode signature "0xc260699b" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xc260699b.
+ 
+Contract Call:
+  address:   0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  function:  executeIntentFromL1(uint256 intentId, uint256 oraclePrice, uint256 answeredAt, address beneficiary)
+  args:                         (1, 215800000000, 1773930168, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #2
+   Price: $2158
+   Timestamp: 2026-03-19T14:43:55.000Z
+   ⏳ Calling L2 Executor...
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #2
+   Price: $2158
+   Timestamp: 2026-03-19T14:43:55.000Z
+   ⏳ Calling L2 Executor...
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #2
+   Price: $2158
+   Timestamp: 2026-03-19T14:43:55.000Z
+   ⏳ Calling L2 Executor...
+   ✅ Executed! Tx: 0x67bd04eb1c9d09ea6a541d0b2f6a5c9f7db142eb26510764f355678595013381
+   🔗 https://sepolia.uniscan.xyz/tx/0x67bd04eb1c9d09ea6a541d0b2f6a5c9f7db142eb26510764f355678595013381
+   ❌ Execution failed: Nonce provided for the transaction is lower than the current nonce of the account.
+Try increasing the nonce or find the latest nonce with `getTransactionCount`.
+
+Request Arguments:
+  from:  0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+  to:    0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  data:  0x6ad491710000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000323eaeae000000000000000000000000000000000000000000000000000000000069bc0bab0000000000000000000000000000000000000000000000000000000000000000
+ 
+Contract Call:
+  address:   0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  function:  executeIntentFromL1(uint256 intentId, uint256 oraclePrice, uint256 answeredAt, address beneficiary)
+  args:                         (2, 215800000000, 1773931435, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/writeContract
+Details: already known
+Version: viem@2.45.1
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xc260699b
+
+Unable to decode signature "0xc260699b" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xc260699b.
+ 
+Contract Call:
+  address:   0xa05d7F26b8BBc7166f5a60e8f415f22D5D9209B1
+  function:  executeIntentFromL1(uint256 intentId, uint256 oraclePrice, uint256 answeredAt, address beneficiary)
+  args:                         (2, 215800000000, 1773931435, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1

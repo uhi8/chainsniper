@@ -16,11 +16,13 @@ export function UserIntents() {
     useEffect(() => { setMounted(true) }, [])
 
     const { data: nextIntentId, refetch: refetchNextId } = useReadContract({
-        address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+        address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
         functionName: 'nextIntentId',
+        chainId: 1301,
         query: {
             enabled: mounted && isConnected,
+            refetchInterval: 3000,
         }
     })
 
@@ -73,10 +75,12 @@ export function UserIntents() {
             </div>
 
             <div className="flex-1 overflow-y-auto space-y-2">
-                {!isConnected ? (
-                    <p className="text-xs text-gray-500 text-center mt-4">Connect wallet to view orders</p>
-                ) : (
-                    <IntentList nextId={Number(nextIntentId || 0)} userAddress={address as string} />
+                {mounted && (
+                    !isConnected ? (
+                        <p className="text-xs text-gray-500 text-center mt-4">Connect wallet to view orders</p>
+                    ) : (
+                        <IntentList nextId={Number(nextIntentId || 0)} userAddress={address as string} />
+                    )
                 )}
             </div>
         </div>
@@ -101,10 +105,14 @@ function IntentList({ nextId, userAddress }: { nextId: number, userAddress: stri
 
 function IntentItem({ id, userAddress }: { id: number, userAddress: string }) {
     const { data: intent, refetch } = useReadContract({
-        address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+        address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
         functionName: 'getIntent',
         args: [BigInt(id)],
+        chainId: 1301,
+        query: {
+            refetchInterval: 3000,
+        }
     })
 
     const { writeContract: cancel, data: cancelHash, isPending } = useWriteContract()
@@ -147,10 +155,11 @@ function IntentItem({ id, userAddress }: { id: number, userAddress: string }) {
                 {status === 'Active' || status === 'Expired' ? (
                     <button
                         onClick={() => cancel({
-                            address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+                            address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
                             abi: SNIPER_HOOK_ABI,
                             functionName: 'cancelIntent',
-                            args: [BigInt(id), userAddress as `0x${string}`]
+                            args: [BigInt(id), userAddress as `0x${string}`],
+                            chainId: 1301,
                         })}
                         disabled={isPending || isConfirming}
                         className="p-1.5 text-gray-400 hover:text-red-400 transition-colors disabled:opacity-50"

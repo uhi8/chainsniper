@@ -1,0 +1,1292 @@
+🔍 Starting Price Monitor...
+📊 Watching Chainlink Feed: 0x694AA1769357215DE4FAC081bf1f309aDC325306
+🎯 Monitoring L1 Monitor: 0x699C19321188aB200194E8A2B6db19B43106E70F
+⏰ Checking price every 10 seconds...
+
+
+🧪 DEMO MODE: Using price from file: $2158
+
+💰 Price Update: $2158.00
+
+🎯 CONDITION MET for Intent #1!
+   Type: BUY
+   Target: $2160.00
+   Current: $2158.00
+   ⏳ Triggering execution...
+   ✅ Triggered! Tx: 0xb2e9a5f7f01faa5535cf90aa0f8afce0b499719f23d3586418c4c5ee7040bed9
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 8: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (8)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+Error checking intent 14: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (14)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 20: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (20)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 13: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (13)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+Error checking intent 17: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (17)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+Error checking intent 20: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (20)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 16: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (16)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+Error checking intent 18: The contract function "intents" reverted with the following reason:
+upstream does not have the requested block yet
+
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (18)
+
+Docs: https://viem.sh/docs/contract/readContract
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 15: The request took too long to respond.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_call","params":[{"data":"0x46a1a095000000000000000000000000000000000000000000000000000000000000000f","to":"0x699C19321188aB200194E8A2B6db19B43106E70F"},"latest"]}
+ 
+Raw Call Arguments:
+  to:    0x699C19321188aB200194E8A2B6db19B43106E70F
+  data:  0x46a1a095000000000000000000000000000000000000000000000000000000000000000f
+ 
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (15)
+
+Docs: https://viem.sh/docs/contract/readContract
+Details: The request timed out.
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+Error checking intent 4: The request took too long to respond.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_call","params":[{"data":"0x46a1a0950000000000000000000000000000000000000000000000000000000000000004","to":"0x699C19321188aB200194E8A2B6db19B43106E70F"},"latest"]}
+ 
+Raw Call Arguments:
+  to:    0x699C19321188aB200194E8A2B6db19B43106E70F
+  data:  0x46a1a0950000000000000000000000000000000000000000000000000000000000000004
+ 
+Contract Call:
+  address:   0x699C19321188aB200194E8A2B6db19B43106E70F
+  function:  intents(uint256)
+  args:             (4)
+
+Docs: https://viem.sh/docs/contract/readContract
+Details: The request timed out.
+Version: viem@2.45.1
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158
+
+🧪 DEMO MODE: Using price from file: $2158

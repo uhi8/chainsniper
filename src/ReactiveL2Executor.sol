@@ -248,7 +248,7 @@ contract ReactiveL2Executor is AbstractReactive {
         if (address(sniperHook) != address(0)) {
             sniperHook.executeIntentFromL1(
                 intentId,
-                currentPrice,
+                uint256(currentPrice),
                 updatedAt,
                 address(0)
             );

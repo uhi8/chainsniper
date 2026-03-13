@@ -1,0 +1,165 @@
+🔗 Starting Execution Relay...
+📡 Watching L1 Monitor: 0x699C19321188aB200194E8A2B6db19B43106E70F
+🎯 Relaying to L2 Hook: 0x1DbeE32e2A31B339062852298719AbC071B6a75c
+⏰ Polling every 5 seconds...
+
+
+📬 Found 2 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2185.8333
+   Timestamp: 2026-03-19T10:52:13.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xd36c8500
+
+Unable to decode signature "0xd36c8500" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xd36c8500.
+ 
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (1, 218583330000, 1773917533, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+
+🎯 Relaying Intent #2
+   Price: $2182
+   Timestamp: 2026-03-19T11:08:05.000Z
+   ⏳ Calling L2 Executor...
+
+📬 Found 2 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2185.8333
+   Timestamp: 2026-03-19T10:52:13.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xd36c8500
+
+Unable to decode signature "0xd36c8500" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xd36c8500.
+ 
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (2, 218200000000, 1773918485, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xd36c8500
+
+Unable to decode signature "0xd36c8500" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xd36c8500.
+ 
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (1, 218583330000, 1773917533, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+
+🎯 Relaying Intent #2
+   Price: $2182
+   Timestamp: 2026-03-19T11:08:05.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted with the following signature:
+0xd36c8500
+
+Unable to decode signature "0xd36c8500" as it was not found on the provided ABI.
+Make sure you are using the correct ABI and that the error exists on it.
+You can look up the decoded signature here: https://4byte.sourcify.dev/?q=0xd36c8500.
+ 
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (2, 218200000000, 1773918485, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/decodeErrorResult
+Version: viem@2.45.1
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2158
+   Timestamp: 2026-03-19T12:14:14.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted.
+
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (1, 215800000000, 1773922454, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/writeContract
+Version: viem@2.45.1
+
+📬 Found 1 new execution event(s)
+
+🎯 Relaying Intent #1
+   Price: $2158
+   Timestamp: 2026-03-19T12:14:14.000Z
+   ⏳ Calling L2 Executor...
+   ❌ Execution failed: The contract function "executeIntentFromL1" reverted.
+
+Contract Call:
+  address:   0x1DbeE32e2A31B339062852298719AbC071B6a75c
+  function:  executeIntentFromL1(uint256 intentId, int256 currentPrice, uint256 triggeredAt, address beneficiary)
+  args:                         (1, 215800000000, 1773922454, 0x0000000000000000000000000000000000000000)
+  sender:    0xd2df53D9791e98Db221842Dd085F4144014BBE2a
+
+Docs: https://viem.sh/docs/contract/writeContract
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_blockNumber"}
+
+Details: Post "": dial tcp: lookup omega-archive-nodes-ovh.host.prq-infra.net on 10.200.0.10:53: no such host
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_blockNumber"}
+
+Details: Post "": dial tcp: lookup omega-archive-nodes-ovh.host.prq-infra.net on 10.200.0.10:53: no such host
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_blockNumber"}
+
+Details: Post "": dial tcp: lookup omega-archive-nodes-ovh.host.prq-infra.net on 10.200.0.10:53: no such host
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_blockNumber"}
+
+Details: Post "": dial tcp: lookup omega-archive-nodes-ovh.host.prq-infra.net on 10.200.0.10:53: no such host
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_blockNumber"}
+
+Details: Post "": dial tcp: lookup omega-archive-nodes-ovh.host.prq-infra.net on 10.200.0.10:53: no such host
+Version: viem@2.45.1
+❌ Error in relay: An internal error was received.
+
+URL: https://lasna-rpc.rnk.dev/
+Request body: {"method":"eth_getLogs","params":[{"address":"0x699C19321188aB200194E8A2B6db19B43106E70F","topics":["0xc4ed068fc39594d03621d7e26ba8ce3f2683ac6150d01a74995a928058268109"],"fromBlock":"0x2aa1e0","toBlock":"0x2aa1e1"}]}
+
+Details: block not found for eth_getLogs, requested toBlock 2793953 is not yet available on the node (latestBlock: 2793895, finalizedBlock: 2793803)
+Version: viem@2.45.1

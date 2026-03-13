@@ -1,20 +1,13 @@
 export const SNIPER_HOOK_ABI = [
     {
         "inputs": [
-            {
-                "components": [
-                    { "internalType": "address", "name": "tokenIn", "type": "address" },
-                    { "internalType": "address", "name": "tokenOut", "type": "address" },
-                    { "internalType": "uint256", "name": "amountIn", "type": "uint256" },
-                    { "internalType": "uint256", "name": "targetPrice", "type": "uint256" },
-                    { "internalType": "uint16", "name": "maxSlippageBps", "type": "uint16" },
-                    { "internalType": "uint256", "name": "expiry", "type": "uint256" },
-                    { "internalType": "int24", "name": "targetTickHint", "type": "int24" }
-                ],
-                "internalType": "struct SniperTypes.CreateIntentParams",
-                "name": "params",
-                "type": "tuple"
-            }
+            { "internalType": "address", "name": "tokenIn", "type": "address" },
+            { "internalType": "address", "name": "tokenOut", "type": "address" },
+            { "internalType": "uint256", "name": "amountIn", "type": "uint256" },
+            { "internalType": "uint256", "name": "targetPrice", "type": "uint256" },
+            { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+            { "internalType": "uint16", "name": "maxSlippageBps", "type": "uint16" },
+            { "internalType": "int24", "name": "targetTickHint", "type": "int24" }
         ],
         "name": "createIntent",
         "outputs": [{ "internalType": "uint256", "name": "intentId", "type": "uint256" }],
