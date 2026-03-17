@@ -18,9 +18,16 @@ contract DeploySniperHookScript is Script {
         int256 tickSpacingRaw = vm.envOr("TICK_SPACING", int256(60));
         int24 tickSpacing = int24(tickSpacingRaw);
 
-        vm.startBroadcast();
+        uint256 deployerPrivateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
         hook = new UnichainSniperHook(
-            poolManager, token0, token1, poolFee, tickSpacing, minAmountIn, maxStaleness
+            address(poolManager),
+            token0,
+            token1,
+            poolFee,
+            tickSpacing,
+            minAmountIn,
+            maxStaleness
         );
         vm.stopBroadcast();
     }

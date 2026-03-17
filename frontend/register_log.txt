@@ -1,0 +1,9 @@
+DEBUG: Loaded Key Length: 66
+🚀 Starting Auto-Register Agent...
+📡 Watching Unichain Hook: 0x1DbeE32e2A31B339062852298719AbC071B6a75c
+🎯 Targeting Reactive Monitor: 0x699C19321188aB200194E8A2B6db19B43106E70F
+
+🔔 New Intent Detected: #1
+   Target Price: $2160
+   ⏳ Registering on Reactive Network...
+   ✅ Registered! Tx: 0x909feebe8c0916adcda1cac9ab7738dc69a07d576a86307b02e295130e08406c

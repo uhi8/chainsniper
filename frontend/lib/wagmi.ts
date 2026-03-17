@@ -5,10 +5,9 @@ import { unichainSepolia, sepolia } from 'wagmi/chains'
 import { QueryClient } from '@tanstack/react-query'
 
 export const config = createConfig({
-    chains: [unichainSepolia, sepolia],
+    chains: [unichainSepolia],
     transports: {
-        [unichainSepolia.id]: http('https://unichain-sepolia-rpc.publicnode.com'),
-        [sepolia.id]: http('https://ethereum-sepolia.publicnode.com'),
+        [unichainSepolia.id]: http('https://sepolia.unichain.org'),
     },
 })
 

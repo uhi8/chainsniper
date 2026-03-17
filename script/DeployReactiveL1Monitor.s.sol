@@ -12,13 +12,14 @@ import {ReactiveL1Monitor} from "../src/ReactiveL1Monitor.sol";
  */
 contract DeployReactiveL1MonitorScript is Script {
     function run() public {
-        vm.startBroadcast();
-        
-        // Deploy ReactiveL1Monitor
-        ReactiveL1Monitor monitor = new ReactiveL1Monitor();
-        
+        uint256 deployerPrivateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
+
+        // Deploy ReactiveL1Monitor with funding for subscriptions
+        ReactiveL1Monitor monitor = new ReactiveL1Monitor{value: 0.1 ether}();
+
         vm.stopBroadcast();
-        
+
         // Log deployment address
         console.log("ReactiveL1Monitor deployed at:", address(monitor));
     }

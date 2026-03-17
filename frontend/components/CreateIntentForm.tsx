@@ -28,6 +28,7 @@ export function CreateIntentForm() {
         abi: ERC20_ABI,
         functionName: 'balanceOf',
         args: address ? [address] : undefined,
+        chainId: 1301,
         query: {
             enabled: !!address && mounted,
             refetchInterval: 10000,
@@ -39,7 +40,8 @@ export function CreateIntentForm() {
         address: DEPLOYED_ADDRESSES.TOKEN0 as `0x${string}`,
         abi: ERC20_ABI,
         functionName: 'allowance',
-        args: address ? [address, DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`] : undefined,
+        args: address ? [address, DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`] : undefined,
+        chainId: 1301,
         query: {
             enabled: !!address && mounted,
             refetchInterval: 5000,
@@ -77,7 +79,8 @@ export function CreateIntentForm() {
             address: DEPLOYED_ADDRESSES.TOKEN0 as `0x${string}`,
             abi: ERC20_ABI,
             functionName: 'approve',
-            args: [DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`, parseUnits(amount, 6)],
+            args: [DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`, parseUnits(amount, 6)],
+            chainId: 1301,
         })
     }
 
@@ -87,20 +90,19 @@ export function CreateIntentForm() {
         const expiry = Math.floor(Date.now() / 1000) + parseInt(hours) * 3600
 
         create({
-            address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+            address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
             abi: SNIPER_HOOK_ABI,
             functionName: 'createIntent',
             args: [
-                {
-                    tokenIn: DEPLOYED_ADDRESSES.TOKEN0 as `0x${string}`,
-                    tokenOut: DEPLOYED_ADDRESSES.TOKEN1 as `0x${string}`,
-                    amountIn: parseUnits(amount, 6),
-                    targetPrice: parseUnits(targetPrice, 8),
-                    maxSlippageBps: 500,
-                    expiry: BigInt(expiry),
-                    targetTickHint: 0,
-                },
+                DEPLOYED_ADDRESSES.TOKEN0 as `0x${string}`,
+                DEPLOYED_ADDRESSES.TOKEN1 as `0x${string}`,
+                parseUnits(amount, 6),
+                parseUnits(targetPrice, 8),
+                BigInt(expiry),
+                500, // maxSlippageBps
+                0, // targetTickHint
             ],
+            chainId: 1301,
         })
     }
 

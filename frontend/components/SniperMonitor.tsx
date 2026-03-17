@@ -2,7 +2,8 @@
 
 import { useWatchContractEvent, usePublicClient, useAccount } from 'wagmi'
 import { useState, useEffect } from 'react'
-import { Activity, CheckCircle, XCircle } from 'lucide-react'
+import { Activity, CheckCircle, XCircle, Search } from 'lucide-react'
+import { unichainSepolia } from 'wagmi/chains'
 import { DEPLOYED_ADDRESSES } from '@/lib/addresses'
 import { SNIPER_HOOK_ABI } from '@/lib/abis'
 
@@ -37,9 +38,10 @@ export function SniperMonitor() {
 
     // Watch for new IntentCreated events
     useWatchContractEvent({
-        address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+        address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
         eventName: 'IntentCreated',
+        chainId: unichainSepolia.id,
         onLogs(logs) {
             logs.forEach((log) => {
                 const args = log.args as any
@@ -53,9 +55,10 @@ export function SniperMonitor() {
 
     // Watch for new IntentExecuted events
     useWatchContractEvent({
-        address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+        address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
         eventName: 'IntentExecuted',
+        chainId: unichainSepolia.id,
         onLogs(logs) {
             logs.forEach((log) => {
                 const args = log.args as any
@@ -68,7 +71,7 @@ export function SniperMonitor() {
     })
 
     // Fetch historical events on mount
-    const publicClient = usePublicClient()
+    const publicClient = usePublicClient({ chainId: unichainSepolia.id })
 
     useEffect(() => {
         const fetchHistory = async () => {
@@ -86,14 +89,14 @@ export function SniperMonitor() {
                     : DEPLOYMENT_BLOCK
 
                 const creationLogs = await publicClient.getContractEvents({
-                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
                     abi: SNIPER_HOOK_ABI,
                     eventName: 'IntentCreated',
                     fromBlock: fromBlock
                 })
 
                 const executionLogs = await publicClient.getContractEvents({
-                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK as `0x${string}`,
+                    address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
                     abi: SNIPER_HOOK_ABI,
                     eventName: 'IntentExecuted',
                     fromBlock: fromBlock
