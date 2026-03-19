@@ -6,12 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "start:agents": "concurrently \"npx tsx scripts/auto_register.ts\" \"npx tsx scripts/price_monitor.ts\" \"npx tsx scripts/execution_relay.ts\""
+    "lint": "eslint"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.20",
-    "concurrently": "^9.1.2",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
     "react": "19.2.3",

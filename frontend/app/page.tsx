@@ -3,7 +3,8 @@ import { CreateIntentForm } from "@/components/CreateIntentForm";
 import { SniperMonitor } from "@/components/SniperMonitor";
 import { LivePrice } from "@/components/LivePrice";
 import { UserIntents } from "@/components/UserIntents";
-import { Target } from "lucide-react";
+import { Target, Presentation } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -31,7 +32,16 @@ export default function Home() {
               <p className="text-[10px] text-gray-500">Automated Limit Orders • Uniswap V4</p>
             </div>
           </div>
-          <ConnectButton />
+          <div className="flex items-center gap-4">
+            <Link 
+              href="/pitch" 
+              className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-lg text-xs font-bold text-indigo-400 hover:bg-indigo-500/20 transition-all transition-colors duration-200"
+            >
+              <Presentation className="w-3.5 h-3.5" />
+              Pitch Deck
+            </Link>
+            <ConnectButton />
+          </div>
         </header>
 
         {/* Main Content Grid - 3 Columns */}
@@ -58,8 +68,11 @@ export default function Home() {
         </div>
 
         {/* Compact Footer */}
-        <footer className="mt-3 pt-2 border-t border-gray-800 text-center text-[10px] text-gray-600">
+        <footer className="mt-3 pt-2 border-t border-gray-800 flex items-center justify-between text-[10px] text-gray-600">
           <p>Unichain Sepolia • Reactive Network • Chainlink Oracle</p>
+          <Link href="/pitch" className="hover:text-indigo-400 transition-colors uppercase tracking-widest font-bold">
+            View Presentation →
+          </Link>
         </footer>
       </div>
     </main>
