@@ -212,7 +212,7 @@ contract ReactiveL1Monitor is AbstractReactive {
      * @param intentId The intent ID to trigger
      * @param mockPrice The price to use for triggering (8 decimals)
      */
-    function testTriggerIntent(
+    function triggerIntentForTest(
         uint256 intentId,
         int256 mockPrice
     ) external onlyOwner {

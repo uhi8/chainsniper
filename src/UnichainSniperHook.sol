@@ -131,7 +131,7 @@ contract UnichainSniperHook is Ownable {
         );
     }
 
-    function cancelIntent(uint256 intentId, address recipient) external {
+    function cancelIntent(uint256 intentId, address recipient) public {
         SniperTypes.Intent storage intent = intents[intentId];
         if (intent.user != msg.sender) revert NotAuthorized();
         if (intent.executed || intent.cancelled) revert IntentInactive();
@@ -147,7 +147,7 @@ contract UnichainSniperHook is Ownable {
 
     function refundIntent(uint256 intentId, address recipient) external {
         // Alias for cancel for compatibility
-        this.cancelIntent(intentId, recipient);
+        cancelIntent(intentId, recipient);
     }
 
     function executeIntentFromL1(

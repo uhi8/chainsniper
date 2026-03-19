@@ -18,7 +18,7 @@ contract DeployNewHook is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         UnichainSniperHook hook = new UnichainSniperHook(
-            poolManager,
+            address(poolManager),
             0x31d0220469e10c4E71834a79b1f276d740d3768F, // TOKEN0 (USDC) - checksummed
             0x4200000000000000000000000000000000000006, // TOKEN1 (WETH)
             3000, // poolFee
