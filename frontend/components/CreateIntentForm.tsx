@@ -184,10 +184,24 @@ export function CreateIntentForm() {
             )}
 
             {/* Only render connection message after mount to avoid hydration mismatch */}
+            {/* Status Feedback */}
+            {mounted && (
+                <div className="mt-3 pt-3 border-t border-gray-800 space-y-2">
+                    <div className="flex items-center justify-between text-[10px]">
+                        <span className="text-gray-500 uppercase">Wallet</span>
+                        <span className={isConnected ? "text-emerald-400 font-bold" : "text-amber-500 font-bold"}>
+                            {isConnected ? "CONNECTED" : "DISCONNECTED"}
+                        </span>
+                    </div>
+                </div>
+            )}
+
             {mounted && !isConnected && (
-                <p className="text-[10px] text-center text-gray-500 mt-2">
-                    Connect wallet to create orders
-                </p>
+                <div className="mt-3 p-3 bg-indigo-500/5 border border-indigo-500/10 rounded-lg">
+                    <p className="text-[10px] text-center text-indigo-400 font-bold uppercase tracking-wider">
+                        Please connect your wallet above to start
+                    </p>
+                </div>
             )}
 
             {mounted && isConnected && (allowance === undefined || usdcBalance === undefined) && (

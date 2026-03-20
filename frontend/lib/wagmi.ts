@@ -1,18 +1,23 @@
 import { http, createConfig } from 'wagmi'
 import { unichainSepolia } from 'wagmi/chains'
 import { QueryClient } from '@tanstack/react-query'
+import { injected, metaMask, coinbaseWallet } from 'wagmi/connectors'
 
 // FORCE ONLY LOCAL PROXY to stop browser-level request storms
-// This forces all traffic through the Vercel server which handles rate limits better
 export const config = createConfig({
     chains: [unichainSepolia],
+    connectors: [
+        injected(),
+        metaMask(),
+        coinbaseWallet(),
+    ],
     transports: {
         [unichainSepolia.id]: http('/api/rpc', { 
             batch: true,
             timeout: 30000, 
         }),
     },
-    pollingInterval: 60000, // Global polling set to 1 minute
+    pollingInterval: 60000, 
 })
 
 export const queryClient = new QueryClient({
