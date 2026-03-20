@@ -35,13 +35,13 @@ export function LivePrice() {
         fetchPriceData()
     }, [])
 
-    // Auto-refresh price every 10 seconds
+    // Auto-refresh price every 30 seconds (increased for Vercel stability)
     useEffect(() => {
         if (!mounted) return
 
         const interval = setInterval(() => {
             fetchPriceData()
-        }, 10000)
+        }, 30000)
 
         return () => clearInterval(interval)
     }, [mounted])
@@ -114,6 +114,11 @@ export function LivePrice() {
                             <div className="flex items-center gap-2 py-1 px-3 bg-blue-500/10 rounded-full border border-blue-500/20">
                                 <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping" />
                                 <span className="text-[10px] text-blue-400 font-bold uppercase tracking-tighter">Syncing...</span>
+                            </div>
+                        )}
+                        {!price && !isRefetching && mounted && (
+                            <div className="flex items-center gap-2 py-1 px-3 bg-amber-500/10 rounded-full border border-amber-500/20">
+                                <span className="text-[10px] text-amber-500 font-bold uppercase tracking-tighter">⚠️ RPC Lag</span>
                             </div>
                         )}
                     </div>

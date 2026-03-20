@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi'
 import { parseUnits, formatUnits } from 'viem'
-import { Target } from 'lucide-react'
+import { Target, AlertTriangle } from 'lucide-react'
 import { DEPLOYED_ADDRESSES } from '@/lib/addresses'
 import { SNIPER_HOOK_ABI, ERC20_ABI } from '@/lib/abis'
 
@@ -31,7 +31,8 @@ export function CreateIntentForm() {
         chainId: 1301,
         query: {
             enabled: !!address && mounted,
-            refetchInterval: 10000,
+            refetchInterval: 30000, // Reduced to 30s
+            retry: 1,
         },
     })
 
@@ -44,7 +45,8 @@ export function CreateIntentForm() {
         chainId: 1301,
         query: {
             enabled: !!address && mounted,
-            refetchInterval: 5000,
+            refetchInterval: 30000, // Reduced to 30s
+            retry: 1,
         },
     })
 
@@ -186,6 +188,15 @@ export function CreateIntentForm() {
                 <p className="text-[10px] text-center text-gray-500 mt-2">
                     Connect wallet to create orders
                 </p>
+            )}
+
+            {mounted && isConnected && (allowance === undefined || usdcBalance === undefined) && (
+                <div className="flex items-center justify-center gap-1.5 mt-2 opacity-60">
+                    <AlertTriangle className="w-3 h-3 text-amber-500" />
+                    <p className="text-[9px] text-amber-500 font-bold uppercase tracking-tighter">
+                        Network Latency: Syncing Data...
+                    </p>
+                </div>
             )}
         </div>
     )
