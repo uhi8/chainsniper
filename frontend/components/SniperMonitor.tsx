@@ -75,6 +75,7 @@ export function SniperMonitor() {
                 )
             })
         },
+        pollingInterval: 10000, // Force polling every 10s instead of using filters
     })
 
     // Watch for Event: IntentExecuted
@@ -94,6 +95,7 @@ export function SniperMonitor() {
                 )
             })
         },
+        pollingInterval: 10000, // Force polling every 10s instead of using filters
     })
 
     if (!mounted) return null
