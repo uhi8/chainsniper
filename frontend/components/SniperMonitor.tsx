@@ -47,15 +47,22 @@ export function SniperMonitor() {
 
     const publicClient = usePublicClient({ chainId: unichainSepolia.id })
 
-    // Watch for new blocks to update "SCANNING" status
+    // Replace watchBlockNumber with a slow 30s manual interval to stop the request storm
     useEffect(() => {
         if (!publicClient || !mounted) return
-        const unwatch = publicClient.watchBlockNumber({
-            onBlockNumber: (blockNumber) => {
-                setCurrentBlock(Number(blockNumber))
+        
+        const fetchBlock = async () => {
+            try {
+                const block = await publicClient.getBlockNumber()
+                setCurrentBlock(Number(block))
+            } catch (e) {
+                console.error("Scout: Block sync failed", e)
             }
-        })
-        return () => unwatch()
+        }
+
+        fetchBlock()
+        const interval = setInterval(fetchBlock, 30000)
+        return () => clearInterval(interval)
     }, [publicClient, mounted])
 
     // Watch for Event: IntentCreated

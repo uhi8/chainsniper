@@ -1,31 +1,29 @@
-import { http, createConfig, fallback } from 'wagmi'
+import { http, createConfig } from 'wagmi'
 import { unichainSepolia } from 'wagmi/chains'
 import { QueryClient } from '@tanstack/react-query'
 
-// Use our local RPC proxy to bypass Vercel IP blocking and CORS
+// FORCE ONLY LOCAL PROXY to stop browser-level request storms
+// This forces all traffic through the Vercel server which handles rate limits better
 export const config = createConfig({
     chains: [unichainSepolia],
     transports: {
-        // The first transport is our local server-side proxy
-        [unichainSepolia.id]: fallback([
-            http('/api/rpc', { batch: true }), 
-            http('https://unichain-sepolia-rpc.publicnode.com'),
-        ], { 
-            rank: {
-                interval: 60000, // Re-rank every 1 minute
-            }
+        [unichainSepolia.id]: http('/api/rpc', { 
+            batch: true,
+            timeout: 30000, 
         }),
     },
+    pollingInterval: 60000, // Global polling set to 1 minute
 })
 
 export const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            retry: 1, 
-            retryDelay: 5000, // Wait 5s between retries
-            staleTime: 60000, // Consider data fresh for 1 minute
-            gcTime: 300000, // Keep in cache for 5 minutes
+            retry: 0, // Disable retries to stop request storms
+            staleTime: 120000, // 2 minutes stale time
+            gcTime: 600000, // 10 minutes cache
             refetchOnWindowFocus: false,
+            refetchOnMount: false,
+            refetchOnReconnect: false,
         },
     },
 })
