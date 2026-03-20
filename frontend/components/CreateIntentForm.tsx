@@ -31,7 +31,7 @@ export function CreateIntentForm() {
         chainId: 1301,
         query: {
             enabled: !!address && mounted,
-            refetchInterval: 30000, // Reduced to 30s
+            refetchInterval: 60000, // 60s
             retry: 1,
         },
     })
@@ -45,7 +45,7 @@ export function CreateIntentForm() {
         chainId: 1301,
         query: {
             enabled: !!address && mounted,
-            refetchInterval: 30000, // Reduced to 30s
+            refetchInterval: 60000, // 60s
             retry: 1,
         },
     })

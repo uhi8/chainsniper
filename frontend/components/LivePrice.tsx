@@ -35,13 +35,13 @@ export function LivePrice() {
         fetchPriceData()
     }, [])
 
-    // Auto-refresh price every 30 seconds (increased for Vercel stability)
+    // Auto-refresh price every 60 seconds (ultra-stable for Vercel)
     useEffect(() => {
         if (!mounted) return
 
         const interval = setInterval(() => {
             fetchPriceData()
-        }, 30000)
+        }, 60000)
 
         return () => clearInterval(interval)
     }, [mounted])
