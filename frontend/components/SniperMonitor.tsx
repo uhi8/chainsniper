@@ -62,8 +62,24 @@ export function SniperMonitor() {
 
         fetchBlock()
         const interval = setInterval(fetchBlock, 30000)
-        return () => clearInterval(interval)
-    }, [publicClient, mounted])
+
+        // Handle Demo Mode Crash Simulation
+        const handleDemoCrash = () => {
+            setStats(prev => ({ ...prev, hits: prev.hits + 1 }));
+            addLog(
+                `🎯 DIRECT HIT: Intent #772 executed at $1,850.42 (Demo Simulation)`,
+                'success',
+                currentBlock || 47118000
+            );
+        };
+
+        window.addEventListener('demo-trigger-crash', handleDemoCrash);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('demo-trigger-crash', handleDemoCrash);
+        }
+    }, [publicClient, mounted, currentBlock])
 
     // Watch for Event: IntentCreated
     useWatchContractEvent({

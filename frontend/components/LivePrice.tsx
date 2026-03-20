@@ -123,13 +123,23 @@ export function LivePrice() {
                         )}
                     </div>
                     
-                    <div className={`mt-auto pt-4 border-t ${isDemoMode ? 'border-amber-500/20' : 'border-blue-500/20'}`}>
-                        <p className="text-[11px] text-gray-400 text-center leading-relaxed">
+                    <div className={`mt-auto pt-4 border-t flex items-center justify-between ${isDemoMode ? 'border-amber-500/20' : 'border-blue-500/20'}`}>
+                        <p className="text-[11px] text-gray-400 leading-relaxed max-w-[70%]">
                             {isDemoMode 
                                 ? <span className="text-amber-300/80 font-medium">🛠️ Manual price control enabled for demo</span>
                                 : <span className="opacity-80">💡 Hook triggers below <span className="text-blue-300 font-bold">${price.toFixed(2)}</span></span>
                             }
                         </p>
+                        <button 
+                            onClick={() => {
+                                setPrice(1850.42);
+                                setIsDemoMode(true);
+                                window.dispatchEvent(new CustomEvent('demo-trigger-crash'));
+                            }}
+                            className="px-2 py-1 bg-amber-500/20 hover:bg-amber-500/40 border border-amber-500/40 rounded text-[9px] font-black text-amber-500 uppercase tracking-tighter transition-all"
+                        >
+                            DEMO
+                        </button>
                     </div>
                 </div>
             )}
