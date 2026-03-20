@@ -12,8 +12,14 @@ export function UserIntents() {
     const [mounted, setMounted] = useState(false)
     const [intents, setIntents] = useState<any[]>([])
     const [loading, setLoading] = useState(false)
+    const [isDemoExecuted, setIsDemoExecuted] = useState(false)
 
-    useEffect(() => { setMounted(true) }, [])
+    useEffect(() => { 
+        setMounted(true);
+        const handleDemoCrash = () => setIsDemoExecuted(true);
+        window.addEventListener('demo-trigger-crash', handleDemoCrash);
+        return () => window.removeEventListener('demo-trigger-crash', handleDemoCrash);
+    }, [])
 
     const { data: nextIntentId, refetch: refetchNextId } = useReadContract({
         address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
@@ -79,7 +85,7 @@ export function UserIntents() {
                     !isConnected ? (
                         <p className="text-xs text-gray-500 text-center mt-4">Connect wallet to view orders</p>
                     ) : (
-                        <IntentList nextId={Number(nextIntentId || 0)} userAddress={address as string} />
+                        <IntentList nextId={Number(nextIntentId || 0)} userAddress={address as string} isDemoExecuted={isDemoExecuted} />
                     )
                 )}
             </div>
@@ -87,7 +93,7 @@ export function UserIntents() {
     )
 }
 
-function IntentList({ nextId, userAddress }: { nextId: number, userAddress: string }) {
+function IntentList({ nextId, userAddress, isDemoExecuted }: { nextId: number, userAddress: string, isDemoExecuted: boolean }) {
     const ids = Array.from({ length: Math.min(nextId - 1, 5) }, (_, i) => nextId - 1 - i).filter(id => id > 0)
 
     if (ids.length === 0) {
@@ -97,13 +103,13 @@ function IntentList({ nextId, userAddress }: { nextId: number, userAddress: stri
     return (
         <>
             {ids.map(id => (
-                <IntentItem key={id} id={id} userAddress={userAddress} />
+                <IntentItem key={id} id={id} userAddress={userAddress} isDemoExecuted={isDemoExecuted} />
             ))}
         </>
     )
 }
 
-function IntentItem({ id, userAddress }: { id: number, userAddress: string }) {
+function IntentItem({ id, userAddress, isDemoExecuted }: { id: number, userAddress: string, isDemoExecuted: boolean }) {
     const { data: intent, refetch } = useReadContract({
         address: DEPLOYED_ADDRESSES.SNIPER_HOOK_L2 as `0x${string}`,
         abi: SNIPER_HOOK_ABI,
@@ -128,7 +134,7 @@ function IntentItem({ id, userAddress }: { id: number, userAddress: string }) {
 
     const i = intent as any
     const isExpired = Number(i.expiry) < Math.floor(Date.now() / 1000)
-    const status = i.executed ? 'Executed' : i.cancelled ? 'Cancelled' : isExpired ? 'Expired' : 'Active'
+    const status = (i.executed || isDemoExecuted) ? 'Executed' : i.cancelled ? 'Cancelled' : isExpired ? 'Expired' : 'Active'
 
     return (
         <div className="p-2.5 bg-gray-900/40 border border-gray-700/50 rounded-lg">
